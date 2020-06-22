@@ -22,6 +22,8 @@ class pet {
         const petLife = document.querySelector('.pet');
         dead = true;
         screen.removeChild(petLife);
+
+        time = 0;
     }
 
     // morph
@@ -32,10 +34,10 @@ const namePet = () => {
 }
 
 const addPet = () => {
+    dead = false;
+
     const newPetClass = new pet (petName, 0, 0, 0, 0);
     p = newPetClass;
-
-    screen.removeChild(startButton);
 
     const sidebar = document.createElement('aside');
     sidebar.setAttribute('class', 'info');
@@ -80,10 +82,6 @@ const addPet = () => {
     button3.innerText = 'Play';
     bottombar.appendChild(button3);
 
-    
-    const buttons = document.querySelector('.interact');
-    console.log(buttons);
-
     const name = document.createElement('h1');
     name.setAttribute('id', 'name');
     name.innerText = p.name;
@@ -127,7 +125,7 @@ function startTimer(){
                     let ageNum = document.querySelector('#info1');
                     ageNum.innerText = `age: ${p.age++}`;
                 }
-                if(time % 6 === 0){
+                if(time % 8 === 0){
                     let sleepyNum = document.querySelector('#info3');
                     sleepyNum.innerText = `sleepiness: ${p.sleepiness++}`;
                 }
@@ -144,7 +142,7 @@ function startTimer(){
                     p.die();
                 }
             }
-        }, 1000);
+        }, 100);
     }
 }
 
