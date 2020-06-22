@@ -5,6 +5,7 @@ let p = {};
 let petName = '';
 let started = false;
 let time = 0;
+let dead = false;
 
 class pet {
     constructor(name, age, hunger, sleepiness, boredom){
@@ -15,12 +16,13 @@ class pet {
         this.boredom = boredom;
     }
 
-    // function increase age
-    // function increase hunger
-    // function increase sleepiness
-    // function increase boredom
-
     // function die
+
+    die = () => {
+        const petLife = document.querySelector('.pet');
+        dead = true;
+        screen.removeChild(petLife);
+    }
 
     // morph
 }
@@ -117,25 +119,32 @@ function startTimer(){
         started = true;
 
         const timer = setInterval(function () {
-            time++;
-            
-            if(time % 360 === 0){
-                let ageNum = document.querySelector('#info1');
-                ageNum.innerText = `age: ${p.age++}`;
+            if(!dead){
+
+                time++;
+                
+                if(time % 360 === 0){
+                    let ageNum = document.querySelector('#info1');
+                    ageNum.innerText = `age: ${p.age++}`;
+                }
+                if(time % 6 === 0){
+                    let sleepyNum = document.querySelector('#info3');
+                    sleepyNum.innerText = `sleepiness: ${p.sleepiness++}`;
+                }
+                if(time % 6 === 0){
+                    let hungerNum = document.querySelector('#info2');
+                    hungerNum.innerText = `hunger: ${p.hunger++}`;
+                }
+                if(time % 2 === 0){
+                    let boredNum = document.querySelector('#info4');
+                    boredNum.innerText = `boredom: ${p.boredom++}`;
+                }
+
+                if (p.hunger > 10 || p.sleepiness > 10 || p.boredom > 10){
+                    p.die();
+                }
             }
-            if(time % 6 === 0){
-                let sleepyNum = document.querySelector('#info3');
-                sleepyNum.innerText = `sleepiness: ${p.sleepiness++}`;
-            }
-            if(time % 6 === 0){
-                let hungerNum = document.querySelector('#info2');
-                hungerNum.innerText = `hunger: ${p.hunger++}`;
-            }
-            if(time % 2 === 0){
-                let boredNum = document.querySelector('#info4');
-                boredNum.innerText = `boredom: ${p.boredom++}`;
-            }
-        }, 100);
+        }, 1000);
     }
 }
 
@@ -151,6 +160,9 @@ const sleepPet = () => {
     p.sleepiness = '0';
 }
 
+
+
 $(() => {
     $('.start').on('click', makePet);
 });
+
