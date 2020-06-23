@@ -142,7 +142,7 @@ function startTimer(){
                     p.die();
                 }
             }
-        }, 100);
+        }, 1000);
     }
 }
 
@@ -159,8 +159,5 @@ const sleepPet = () => {
 }
 
 
-
-$(() => {
-    $('.start').on('click', makePet);
-});
+$('.start').on('click', makePet);
 
