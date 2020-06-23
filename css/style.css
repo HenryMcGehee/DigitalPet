@@ -1,3 +1,7 @@
+body {
+    background-color: black;
+}
+
 .screen {
     position: relative;
     height: 100vh;
@@ -5,7 +9,51 @@
     text-align: center;
 }
 
+h1 {
+    color: cornsilk;
+}
+
+h2 {
+    color: cornsilk;
+}
 
 #name {
     margin: 20px 20px;
+}
+
+#young {
+    margin: auto;
+    background:url(../Images/tv1.png);
+    width: calc(5000px / 10);
+    height: 500px;
+    animation: idle 1.0s steps(10) infinite;
+}
+
+#older {
+    margin: auto;
+    background:url(../Images/tv2.png);
+    width: calc(5000px / 10);
+    height: 500px;
+    animation: idle 1.0s steps(10) infinite;
+}
+
+#old {
+    margin: auto;
+    background:url(../Images/tv3.png);
+    width: calc(5000px / 10);
+    height: 500px;
+    animation: idle 1.0s steps(10) infinite;
+}
+
+
+#ancient {
+    background:url(../Images/sprites2.png);
+    width: calc(1600px / 10);
+    height: 160px;
+    animation: idle4 1.0s steps(10) infinite;
+}
+
+@keyframes idle {
+    from { background-position: 0px; }
+    to { background-position: -5000px;}
 }

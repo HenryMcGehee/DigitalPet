@@ -86,9 +86,9 @@ const addPet = () => {
     name.setAttribute('id', 'name');
     name.innerText = p.name;
 
-    const pic = document.createElement('img');
-    pic.setAttribute('class', 'displayPet');
-    pic.src = "https://picsum.photos/400/600";
+    const pic = document.createElement('div');
+    pic.setAttribute('id', 'young');
+    // pic.src = "https://picsum.photos/400/600";
 
     const newPet = document.createElement('SECTION');
     newPet.setAttribute("class", "pet");
@@ -121,9 +121,18 @@ function startTimer(){
 
                 time++;
                 
-                if(time % 360 === 0){
+                if(time % 3 === 0){
                     let ageNum = document.querySelector('#info1');
                     ageNum.innerText = `age: ${p.age++}`;
+
+                    if(p.age === 6){
+                        let pic = document.querySelector('#young');
+                        pic.setAttribute('id', 'older');
+                    }
+                    if(p.age === 11){
+                        let pic = document.querySelector('#older');
+                        pic.setAttribute('id', 'old');
+                    }
                 }
                 if(time % 8 === 0){
                     let sleepyNum = document.querySelector('#info3');
@@ -148,14 +157,20 @@ function startTimer(){
 
 const feedPet = () => {
     p.hunger = '0';
+    let hungerNum = document.querySelector('#info2');
+    hungerNum.innerText = `hunger: ${p.hunger}`;
 }
 
 const playPet = () => {
     p.boredom = '0';
+    let boredNum = document.querySelector('#info4');
+    boredNum.innerText = `boredom: ${p.boredom}`;
 }
 
 const sleepPet = () => {
     p.sleepiness = '0';
+    let sleepyNum = document.querySelector('#info3');
+    sleepyNum.innerText = `sleepiness: ${p.sleepiness}`;
 }
 
 
