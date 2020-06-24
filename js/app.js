@@ -44,19 +44,19 @@ const addPet = () => {
 
     const info1 = document.createElement('h2');
     info1.setAttribute('id', 'info1');
-    info1.innerText = `age: ${p.age}`;
+    info1.innerText = `Power: ${p.age}`;
 
     const info2 = document.createElement('h2');
     info2.setAttribute('id', 'info2');
-    info2.innerText = `hunger: ${p.hunger}`;
+    info2.innerText = `Hunger: ${p.hunger}`;
 
     const info3 = document.createElement('h2');
     info3.setAttribute('id', 'info3');
-    info3.innerText = `sleepiness: ${p.sleepiness}`;
+    info3.innerText = `Belief: ${p.sleepiness}`;
 
     const info4 = document.createElement('h2');
     info4.setAttribute('id', 'info4');
-    info4.innerText = `boredom: ${p.boredom}`;
+    info4.innerText = `Wrath: ${p.boredom}`;
 
     sidebar.appendChild(info1);
     sidebar.appendChild(info2);
@@ -74,12 +74,12 @@ const addPet = () => {
 
     const button2 = document.createElement('button');
     button2.setAttribute('class', 'lights');
-    button2.innerText = 'Light Toggle';
+    button2.innerText = 'Worship';
     bottombar.appendChild(button2);
 
     const button3 = document.createElement('button');
     button3.setAttribute('class', 'play');
-    button3.innerText = 'Play';
+    button3.innerText = 'Offer';
     bottombar.appendChild(button3);
 
     const name = document.createElement('h1');
@@ -121,9 +121,9 @@ function startTimer(){
 
                 time++;
                 
-                if(time % 3 === 0){
+                if(time % 10 === 0){
                     let ageNum = document.querySelector('#info1');
-                    ageNum.innerText = `age: ${p.age++}`;
+                    ageNum.innerText = `Power: ${p.age++}`;
 
                     if(p.age === 6){
                         let pic = document.querySelector('#young');
@@ -133,18 +133,26 @@ function startTimer(){
                         let pic = document.querySelector('#older');
                         pic.setAttribute('id', 'old');
                     }
+                    if(p.age === 16){
+                        let pic = document.querySelector('#old');
+                        pic.setAttribute('id', 'ancient');
+                    }
+                    if(p.age === 21){
+                        let pic = document.querySelector('#ancient');
+                        pic.setAttribute('id', 'elder');
+                    }
                 }
                 if(time % 8 === 0){
                     let sleepyNum = document.querySelector('#info3');
-                    sleepyNum.innerText = `sleepiness: ${p.sleepiness++}`;
+                    sleepyNum.innerText = `Belief: ${p.sleepiness++}`;
                 }
-                if(time % 6 === 0){
+                if(time % 4 === 0){
                     let hungerNum = document.querySelector('#info2');
-                    hungerNum.innerText = `hunger: ${p.hunger++}`;
+                    hungerNum.innerText = `Hunger: ${p.hunger++}`;
                 }
                 if(time % 2 === 0){
                     let boredNum = document.querySelector('#info4');
-                    boredNum.innerText = `boredom: ${p.boredom++}`;
+                    boredNum.innerText = `Wrath: ${p.boredom++}`;
                 }
 
                 if (p.hunger > 10 || p.sleepiness > 10 || p.boredom > 10){
@@ -158,19 +166,19 @@ function startTimer(){
 const feedPet = () => {
     p.hunger = '0';
     let hungerNum = document.querySelector('#info2');
-    hungerNum.innerText = `hunger: ${p.hunger}`;
+    hungerNum.innerText = `Hunger: ${p.hunger}`;
 }
 
 const playPet = () => {
     p.boredom = '0';
     let boredNum = document.querySelector('#info4');
-    boredNum.innerText = `boredom: ${p.boredom}`;
+    boredNum.innerText = `Wrath: ${p.boredom}`;
 }
 
 const sleepPet = () => {
     p.sleepiness = '0';
     let sleepyNum = document.querySelector('#info3');
-    sleepyNum.innerText = `sleepiness: ${p.sleepiness}`;
+    sleepyNum.innerText = `Belief: ${p.sleepiness}`;
 }
 
 

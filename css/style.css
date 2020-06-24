@@ -1,5 +1,8 @@
+
+
 body {
-    background-color: black;
+    background-color: #000000;
+    font-family: 'Cormorant SC', serif;
 }
 
 .screen {
@@ -11,10 +14,85 @@ body {
 
 h1 {
     color: cornsilk;
+    font-size: 100px;
 }
 
 h2 {
     color: cornsilk;
+}
+
+.pet {
+    background-color: #080808;
+}
+
+.info {
+    display: inline-block;
+    margin: auto;
+    padding-left: 100px;
+}
+
+.bottomBar {
+    padding-bottom: 10px;
+}
+
+.start {
+    display: inline-block;
+    background-color: #380000;
+    border-radius: 40px;
+    color: cornsilk;
+    text-align: center;
+    font-size: 28px;
+    padding: 2px;
+    width: 200px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button {
+    font-family: 'Cormorant SC', serif;
+}
+
+button:hover {
+    background-color: #990000;
+  }
+
+.feed {
+    display: inline-block;
+    background-color: #380000;
+    border-radius: 40px;
+    color: cornsilk;
+    text-align: center;
+    font-size: 14px;
+    padding: 2px;
+    width: 90px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.lights {
+    display: inline-block;
+    background-color: #380000;
+    border-radius: 40px;
+    color: cornsilk;
+    text-align: center;
+    font-size: 14px;
+    padding: 2px;
+    width: 90px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.play {
+    display: inline-block;
+    background-color: #380000;
+    border-radius: 40px;
+    color: cornsilk;
+    text-align: center;
+    font-size: 14px;
+    padding: 2px;
+    width: 90px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 #name {
@@ -22,6 +100,7 @@ h2 {
 }
 
 #young {
+    display: inline-block;
     margin: auto;
     background:url(../Images/tv1.png);
     width: calc(5000px / 10);
@@ -30,6 +109,7 @@ h2 {
 }
 
 #older {
+    display: inline-block;
     margin: auto;
     background:url(../Images/tv2.png);
     width: calc(5000px / 10);
@@ -38,6 +118,7 @@ h2 {
 }
 
 #old {
+    display: inline-block;
     margin: auto;
     background:url(../Images/tv3.png);
     width: calc(5000px / 10);
@@ -45,12 +126,22 @@ h2 {
     animation: idle 1.0s steps(10) infinite;
 }
 
-
 #ancient {
-    background:url(../Images/sprites2.png);
-    width: calc(1600px / 10);
-    height: 160px;
-    animation: idle4 1.0s steps(10) infinite;
+    display: inline-block;
+    margin: auto;
+    background:url(../Images/tv4.png);
+    width: calc(5000px / 10);
+    height: 500px;
+    animation: idle 1.0s steps(10) infinite;
+}
+
+#elder {
+    display: inline-block;
+    margin: auto;
+    background:url(../Images/tv5.png);
+    width: calc(5000px / 10);
+    height: 500px;
+    animation: idle 1.0s steps(10) infinite;
 }
 
 @keyframes idle {
