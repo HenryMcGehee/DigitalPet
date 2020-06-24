@@ -1,3 +1,18 @@
+let bgSound, feedSound, offerSound, worshipSound;
+
+function audioLoop(audio, link) {
+    audio = new Audio();
+    audio.src = link;
+    audio.loop = true;
+    audio.play();
+}
+
+function audioOneShot(audio, link) {
+    audio = new Audio();
+    audio.src = link;
+    audio.play();
+}
+
 const screen = document.querySelector('.screen');
 const startButton = document.querySelector('.start');
 
@@ -30,6 +45,7 @@ class pet {
 }
 
 const namePet = () => {
+    audioLoop(bgSound, "./audio/VideoStoreOST.wav");
     petName = prompt('enter your pets name', 'pet');
 }
 
@@ -88,7 +104,6 @@ const addPet = () => {
 
     const pic = document.createElement('div');
     pic.setAttribute('id', 'young');
-    // pic.src = "https://picsum.photos/400/600";
 
     const newPet = document.createElement('SECTION');
     newPet.setAttribute("class", "pet");
@@ -107,8 +122,8 @@ const addPet = () => {
 }
 
 const makePet = () => {
+    
     namePet();
-
     addPet();
 }
 
@@ -164,18 +179,21 @@ function startTimer(){
 }
 
 const feedPet = () => {
+    audioOneShot(feedSound, "./audio/VideoStoreOST.wav");
     p.hunger = '0';
     let hungerNum = document.querySelector('#info2');
     hungerNum.innerText = `Hunger: ${p.hunger}`;
 }
 
 const playPet = () => {
+    audioOneShot(offerSound, "./audio/VideoStoreOST.wav");
     p.boredom = '0';
     let boredNum = document.querySelector('#info4');
     boredNum.innerText = `Wrath: ${p.boredom}`;
 }
 
 const sleepPet = () => {
+    audioOneShot(worshipSound, "./audio/VideoStoreOST.wav");
     p.sleepiness = '0';
     let sleepyNum = document.querySelector('#info3');
     sleepyNum.innerText = `Belief: ${p.sleepiness}`;
