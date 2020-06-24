@@ -1,10 +1,14 @@
 let bgSound, staticSound, symbolSound, squidSound, demonSound, feedSound, offerSound, worshipSound;
+let allSound = [];
 
 function audio(audio, loop, link) {
     audio = new Audio();
     audio.src = link;
     audio.loop = loop;
+    allSound.push(audio);
     audio.play();
+
+    console.log(allSound);
 }
 
 const screen = document.querySelector('.screen');
@@ -28,6 +32,9 @@ class pet {
     // function die
 
     die = () => {
+        for (let i = 0; i < allSound.length; i++) {
+            allSound[i].src = '';
+        }
         const petLife = document.querySelector('.pet');
         dead = true;
         screen.removeChild(petLife);
@@ -35,11 +42,11 @@ class pet {
         time = 0;
     }
 
-    // morph
 }
 
 const namePet = () => {
     audio(bgSound, true, "./audio/amb1.wav");
+
     petName = prompt('enter your pets name', 'pet');
 }
 
