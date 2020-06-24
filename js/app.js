@@ -1,15 +1,9 @@
-let bgSound, feedSound, offerSound, worshipSound;
+let bgSound, staticSound, symbolSound, squidSound, demonSound, feedSound, offerSound, worshipSound;
 
-function audioLoop(audio, link) {
+function audio(audio, loop, link) {
     audio = new Audio();
     audio.src = link;
-    audio.loop = true;
-    audio.play();
-}
-
-function audioOneShot(audio, link) {
-    audio = new Audio();
-    audio.src = link;
+    audio.loop = loop;
     audio.play();
 }
 
@@ -45,7 +39,7 @@ class pet {
 }
 
 const namePet = () => {
-    audioLoop(bgSound, "./audio/VideoStoreOST.wav");
+    audio(bgSound, true, "./audio/amb1.wav");
     petName = prompt('enter your pets name', 'pet');
 }
 
@@ -141,18 +135,22 @@ function startTimer(){
                     ageNum.innerText = `Power: ${p.age++}`;
 
                     if(p.age === 6){
+                        audio(staticSound, true, "./audio/amb1.wav");
                         let pic = document.querySelector('#young');
                         pic.setAttribute('id', 'older');
                     }
                     if(p.age === 11){
+                        audio(symbolSound, true, "./audio/amb1.wav");
                         let pic = document.querySelector('#older');
                         pic.setAttribute('id', 'old');
                     }
                     if(p.age === 16){
+                        audio(squidSound, true,"./audio/amb1.wav");
                         let pic = document.querySelector('#old');
                         pic.setAttribute('id', 'ancient');
                     }
                     if(p.age === 21){
+                        audio(demonSound, true, "./audio/amb1.wav");
                         let pic = document.querySelector('#ancient');
                         pic.setAttribute('id', 'elder');
                     }
@@ -179,21 +177,21 @@ function startTimer(){
 }
 
 const feedPet = () => {
-    audioOneShot(feedSound, "./audio/VideoStoreOST.wav");
+    audio(feedSound, false, "./audio/CAMERA1.wav");
     p.hunger = '0';
     let hungerNum = document.querySelector('#info2');
     hungerNum.innerText = `Hunger: ${p.hunger}`;
 }
 
 const playPet = () => {
-    audioOneShot(offerSound, "./audio/VideoStoreOST.wav");
+    audio(offerSound, false, "./audio/CAMERA1.wav");
     p.boredom = '0';
     let boredNum = document.querySelector('#info4');
     boredNum.innerText = `Wrath: ${p.boredom}`;
 }
 
 const sleepPet = () => {
-    audioOneShot(worshipSound, "./audio/VideoStoreOST.wav");
+    audio(worshipSound, false, "./audio/CAMERA1.wav");
     p.sleepiness = '0';
     let sleepyNum = document.querySelector('#info3');
     sleepyNum.innerText = `Belief: ${p.sleepiness}`;
