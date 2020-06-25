@@ -179,6 +179,7 @@ function startTimer(){
                         petLife.removeChild(buttons);
 
                         addText('You have unleashed Ctul Riel!', petLife);
+                        addButton('Shift Time Lines', petLife);
                     }
                 }
                 if(time % 8 === 0){
@@ -208,7 +209,7 @@ function startTimer(){
                     petLife.removeChild(buttons);
 
                     addText('your pet died', petLife);
-                    addButton('rebirth', petLife);
+                    addButton('Rebirth', petLife);
                 }
 
                 
@@ -233,7 +234,6 @@ const addButton = (content, location) => {
     newButton.innerText = content;
     newButton.addEventListener('click', reLoad);
     location.appendChild(newButton);
-    
 }
 
 const feedPet = () => {
