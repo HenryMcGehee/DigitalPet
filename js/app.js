@@ -140,7 +140,7 @@ function startTimer(){
 
                 time++;
                 
-                if(time % 1 === 0){
+                if(time % 10 === 0){
                     let ageNum = document.querySelector('#info1');
                     ageNum.innerText = `Power: ${p.age++}`;
 
