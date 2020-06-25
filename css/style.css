@@ -147,7 +147,7 @@ button:hover {
 #asended {
     display: inline-block;
     margin: auto;
-    background:url(../Images/tv4.png);
+    background:url(../Images/tv6.png);
     width: calc(5000px / 10);
     height: 500px;
     animation: idle 1.0s steps(10) infinite;
@@ -156,7 +156,7 @@ button:hover {
 #dead {
     display: inline-block;
     margin: auto;
-    background:url(../Images/tv5.png);
+    background:url(../Images/tv6.png);
     width: calc(5000px / 10);
     height: 500px;
     animation: idle 1.0s steps(10) infinite;
