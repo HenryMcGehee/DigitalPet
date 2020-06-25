@@ -5,6 +5,7 @@ let petName = '';
 let started = false;
 let time = 0;
 let dead = false;
+let speed = false;
 
 const screen = document.querySelector('.screen');
 const startButton = document.querySelector('.start');
@@ -129,8 +130,12 @@ function startTimer(){
                 let boredNum = document.querySelector('#info4');
                 let hungerNum = document.querySelector('#info2');
                 let sleepyNum = document.querySelector('#info3');
-
-                time++;
+                
+                if(!speed){
+                    time += 2;
+                }else{
+                    time *= 4;
+                }
                 
                 if(time % 10 === 0){
                     let ageNum = document.querySelector('#info1');
@@ -140,21 +145,25 @@ function startTimer(){
                         audio(staticSound, true, "./audio/static.wav");
                         currentState = document.querySelector('#young');
                         currentState.setAttribute('id', 'older');
+                        addButton('Burn Effigy', buttons, doubleSpeed);
                     }
                     if(p.age === 11){
                         audio(symbolSound, true, "./audio/symbol.wav");
                         currentState = document.querySelector('#older');
                         currentState.setAttribute('id', 'old');
+                        addButton('Burn Effigy', buttons, doubleSpeed);
                     }
                     if(p.age === 16){
                         audio(squidSound, true,"./audio/squid.wav");
                         currentState = document.querySelector('#old');
                         currentState.setAttribute('id', 'ancient');
+                        addButton('Burn Effigy', buttons, doubleSpeed);
                     }
                     if(p.age === 21){
                         audio(demonSound, true, "./audio/baby.wav");
                         currentState = document.querySelector('#ancient');
                         currentState.setAttribute('id', 'elder');
+                        addButton('Burn Effigy', buttons, doubleSpeed);
                     }
                     if (p.age === 25){
                         
@@ -168,10 +177,10 @@ function startTimer(){
                         petLife.removeChild(buttons);
 
                         addText('You have unleashed Ctul Riel!', petLife);
-                        addButton('Shift Time Lines', petLife);
+                        addButton('Shift Time Lines', petLife, reLoad);
                     }
                 }
-                if(time % 8 === 0){
+                if(time % 6 === 0){
                     
                     sleepyNum.innerText = `Belief: ${p.sleepiness--}`;
                 }
@@ -198,10 +207,8 @@ function startTimer(){
                     petLife.removeChild(buttons);
 
                     addText('your pet died', petLife);
-                    addButton('Rebirth', petLife);
+                    addButton('Rebirth', petLife, reLoad);
                 }
-
-                
             }
         }, 1000);
     }
@@ -217,11 +224,11 @@ const addText = (content, location) => {
     location.appendChild(message);
 }
 
-const addButton = (content, location) => {
+const addButton = (content, location, fun) => {
     const newButton = document.createElement('button');
-    newButton.setAttribute('class', '.newButton');
+    newButton.setAttribute('class', 'newButton');
     newButton.innerText = content;
-    newButton.addEventListener('click', reLoad);
+    newButton.addEventListener('click', fun);
     location.appendChild(newButton);
 }
 
@@ -244,6 +251,21 @@ const sleepPet = () => {
     p.sleepiness = '10';
     let sleepyNum = document.querySelector('#info3');
     sleepyNum.innerText = `Belief: ${p.sleepiness}`;
+}
+
+const doubleSpeed = () => {
+    
+    speed = true;
+    const button = document.querySelector('.newButton');
+    const buttons = document.querySelector('.bottomBar');
+    console.log(button);
+    console.log(buttons);
+    buttons.removeChild(button);
+
+    setTimeout(
+        function() {
+          speed = false;
+        }, 5000);
 }
 
 $('.start').on('click', makePet);
