@@ -1,24 +1,13 @@
 let bgSound, staticSound, symbolSound, squidSound, demonSound, feedSound, offerSound, worshipSound;
 let allSound = [];
-
-function audio(audio, loop, link) {
-    audio = new Audio();
-    audio.src = link;
-    audio.loop = loop;
-    allSound.push(audio);
-    audio.play();
-
-    console.log(allSound);
-}
-
-const screen = document.querySelector('.screen');
-const startButton = document.querySelector('.start');
-
 let p = {};
 let petName = '';
 let started = false;
 let time = 0;
 let dead = false;
+
+const screen = document.querySelector('.screen');
+const startButton = document.querySelector('.start');
 
 class pet {
     constructor(name, age, hunger, sleepiness, boredom){
@@ -44,6 +33,14 @@ class pet {
 
 }
 
+function audio(audio, loop, link) {
+    audio = new Audio();
+    audio.src = link;
+    audio.loop = loop;
+    allSound.push(audio);
+    audio.play();
+}
+
 const namePet = () => {
     audio(bgSound, true, "./audio/amb1.wav");
 
@@ -53,7 +50,7 @@ const namePet = () => {
 const addPet = () => {
     dead = false;
 
-    const newPetClass = new pet (petName, 0, 0, 0, 0);
+    const newPetClass = new pet (petName, 0, 0, 10, 0);
     p = newPetClass;
 
     const sidebar = document.createElement('aside');
@@ -164,7 +161,7 @@ function startTimer(){
                 }
                 if(time % 8 === 0){
                     let sleepyNum = document.querySelector('#info3');
-                    sleepyNum.innerText = `Belief: ${p.sleepiness++}`;
+                    sleepyNum.innerText = `Belief: ${p.sleepiness--}`;
                 }
                 if(time % 4 === 0){
                     let hungerNum = document.querySelector('#info2');
@@ -175,7 +172,7 @@ function startTimer(){
                     boredNum.innerText = `Wrath: ${p.boredom++}`;
                 }
 
-                if (p.hunger > 10 || p.sleepiness > 10 || p.boredom > 10){
+                if (p.hunger > 10 || p.sleepiness < 0 || p.boredom > 10){
                     p.die();
                 }
             }
@@ -199,7 +196,7 @@ const playPet = () => {
 
 const sleepPet = () => {
     audio(worshipSound, false, "./audio/CAMERA1.wav");
-    p.sleepiness = '0';
+    p.sleepiness = '10';
     let sleepyNum = document.querySelector('#info3');
     sleepyNum.innerText = `Belief: ${p.sleepiness}`;
 }
