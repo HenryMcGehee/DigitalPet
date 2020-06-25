@@ -21,14 +21,13 @@ class pet {
     // function die
 
     die = () => {
-        for (let i = 0; i < allSound.length; i++) {
-            allSound[i].src = '';
-        }
+        
         const petLife = document.querySelector('.pet');
-        dead = true;
+        
         screen.removeChild(petLife);
+        
 
-        time = 0;
+        
     }
 
 }
@@ -42,7 +41,7 @@ function audio(audio, loop, link) {
 }
 
 const namePet = () => {
-    audio(bgSound, true, "./audio/amb1.wav");
+    audio(bgSound, true, "./audio/bg.wav");
 
     petName = prompt('enter your pets name', 'pet');
 }
@@ -132,70 +131,99 @@ function startTimer(){
         const timer = setInterval(function () {
             if(!dead){
 
+                const petLife = document.querySelector('.pet');
+                let currentState = document.querySelector('#young');
+                let information = document.querySelector('.info');
+                let boredNum = document.querySelector('#info4');
+                let hungerNum = document.querySelector('#info2');
+                let sleepyNum = document.querySelector('#info3');
+
                 time++;
                 
-                if(time % 10 === 0){
+                if(time % 1 === 0){
                     let ageNum = document.querySelector('#info1');
                     ageNum.innerText = `Power: ${p.age++}`;
 
                     if(p.age === 6){
-                        audio(staticSound, true, "./audio/amb1.wav");
-                        let pic = document.querySelector('#young');
-                        pic.setAttribute('id', 'older');
+                        audio(staticSound, true, "./audio/static.wav");
+                        currentState = document.querySelector('#young');
+                        currentState.setAttribute('id', 'older');
                     }
                     if(p.age === 11){
-                        audio(symbolSound, true, "./audio/amb1.wav");
-                        let pic = document.querySelector('#older');
-                        pic.setAttribute('id', 'old');
+                        audio(symbolSound, true, "./audio/symbol.wav");
+                        currentState = document.querySelector('#older');
+                        currentState.setAttribute('id', 'old');
                     }
                     if(p.age === 16){
-                        audio(squidSound, true,"./audio/amb1.wav");
-                        let pic = document.querySelector('#old');
-                        pic.setAttribute('id', 'ancient');
+                        audio(squidSound, true,"./audio/squid.wav");
+                        currentState = document.querySelector('#old');
+                        currentState.setAttribute('id', 'ancient');
                     }
                     if(p.age === 21){
-                        audio(demonSound, true, "./audio/amb1.wav");
-                        let pic = document.querySelector('#ancient');
-                        pic.setAttribute('id', 'elder');
+                        audio(demonSound, true, "./audio/baby.wav");
+                        currentState = document.querySelector('#ancient');
+                        currentState.setAttribute('id', 'elder');
+                    }
+                    if (p.age === 25){
+                        
+                        currentState = document.querySelector('#elder');
+                        currentState.setAttribute('id', 'asended');
+    
+                        dead = true;
+                        time = 0;
+    
+                        petLife.removeChild(information);
                     }
                 }
                 if(time % 8 === 0){
-                    let sleepyNum = document.querySelector('#info3');
+                    
                     sleepyNum.innerText = `Belief: ${p.sleepiness--}`;
                 }
                 if(time % 4 === 0){
-                    let hungerNum = document.querySelector('#info2');
+                    
                     hungerNum.innerText = `Hunger: ${p.hunger++}`;
                 }
                 if(time % 2 === 0){
-                    let boredNum = document.querySelector('#info4');
+                    
                     boredNum.innerText = `Wrath: ${p.boredom++}`;
                 }
 
                 if (p.hunger > 10 || p.sleepiness < 0 || p.boredom > 10){
-                    p.die();
+                    
+                    for (let i = 0; i < allSound.length; i++) {
+                        allSound[i].src = '';
+                    }
+                    currentState.setAttribute('id', 'dead');
+
+                    dead = true;
+                    time = 0;
+
+                    petLife.removeChild(information);
                 }
+
+                
             }
         }, 1000);
     }
 }
 
 const feedPet = () => {
-    audio(feedSound, false, "./audio/CAMERA1.wav");
+    audio(feedSound, false, "./audio/Eat.wav");
     p.hunger = '0';
     let hungerNum = document.querySelector('#info2');
     hungerNum.innerText = `Hunger: ${p.hunger}`;
 }
 
 const playPet = () => {
-    audio(offerSound, false, "./audio/CAMERA1.wav");
+    audio(offerSound, false, "./audio/Offer.wav");
     p.boredom = '0';
     let boredNum = document.querySelector('#info4');
     boredNum.innerText = `Wrath: ${p.boredom}`;
 }
 
 const sleepPet = () => {
-    audio(worshipSound, false, "./audio/CAMERA1.wav");
+    audio(worshipSound, false, "./audio/Pray.wav");
+    console.log(allSound);
     p.sleepiness = '10';
     let sleepyNum = document.querySelector('#info3');
     sleepyNum.innerText = `Belief: ${p.sleepiness}`;
