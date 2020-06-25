@@ -48,6 +48,19 @@ h2 {
     margin: 5px;
 }
 
+.newButton {
+    display: inline-block;
+    background-color: #380000;
+    border-radius: 40px;
+    color: cornsilk;
+    text-align: center;
+    font-size: 28px;
+    padding: 2px;
+    width: 200px;
+    cursor: pointer;
+    margin: 5px;
+}
+
 button {
     font-family: 'Cormorant SC', serif;
 }

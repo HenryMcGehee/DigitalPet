@@ -44,6 +44,8 @@ const namePet = () => {
     audio(bgSound, true, "./audio/bg.wav");
 
     petName = prompt('enter your pets name', 'pet');
+
+    screen.removeChild(startButton);
 }
 
 const addPet = () => {
@@ -132,6 +134,7 @@ function startTimer(){
             if(!dead){
 
                 const petLife = document.querySelector('.pet');
+                const buttons = document.querySelector('.bottomBar');
                 let currentState = document.querySelector('#young');
                 let information = document.querySelector('.info');
                 let boredNum = document.querySelector('#info4');
@@ -173,6 +176,9 @@ function startTimer(){
                         time = 0;
     
                         petLife.removeChild(information);
+                        petLife.removeChild(buttons);
+
+                        addText('You have unleashed Ctul Riel!', petLife);
                     }
                 }
                 if(time % 8 === 0){
@@ -199,12 +205,35 @@ function startTimer(){
                     time = 0;
 
                     petLife.removeChild(information);
+                    petLife.removeChild(buttons);
+
+                    addText('your pet died', petLife);
+                    addButton('rebirth', petLife);
                 }
 
                 
             }
         }, 1000);
     }
+}
+
+const reLoad = () => {
+    location.reload();
+}
+
+const addText = (content, location) => {
+    const message = document.createElement('h2');
+    message.innerText = content;
+    location.appendChild(message);
+}
+
+const addButton = (content, location) => {
+    const newButton = document.createElement('button');
+    newButton.setAttribute('class', '.newButton');
+    newButton.innerText = content;
+    newButton.addEventListener('click', reLoad);
+    location.appendChild(newButton);
+    
 }
 
 const feedPet = () => {
