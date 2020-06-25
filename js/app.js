@@ -8,6 +8,7 @@ let dead = false;
 
 const screen = document.querySelector('.screen');
 const startButton = document.querySelector('.start');
+const startText = document.querySelector('.intro');
 
 class pet {
     constructor(name, age, hunger, sleepiness, boredom){
@@ -17,19 +18,6 @@ class pet {
         this.sleepiness = sleepiness;
         this.boredom = boredom;
     }
-
-    // function die
-
-    die = () => {
-        
-        const petLife = document.querySelector('.pet');
-        
-        screen.removeChild(petLife);
-        
-
-        
-    }
-
 }
 
 function audio(audio, loop, link) {
@@ -46,6 +34,7 @@ const namePet = () => {
     petName = prompt('enter your pets name', 'pet');
 
     screen.removeChild(startButton);
+    screen.removeChild(startText);
 }
 
 const addPet = () => {
@@ -252,12 +241,9 @@ const playPet = () => {
 
 const sleepPet = () => {
     audio(worshipSound, false, "./audio/Pray.wav");
-    console.log(allSound);
     p.sleepiness = '10';
     let sleepyNum = document.querySelector('#info3');
     sleepyNum.innerText = `Belief: ${p.sleepiness}`;
 }
 
-
 $('.start').on('click', makePet);
-

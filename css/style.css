@@ -47,6 +47,19 @@ h2 {
     cursor: pointer;
     margin: 5px;
 }
+.intro {
+    display: block;
+    border-width: 10px;
+    border-color: darkred;
+    background-color: #380000;
+    border-radius: 40px;
+    color: cornsilk;
+    text-align: center;
+    font-size: 28px;
+    padding: 10px;
+    width: auto;
+    margin: 50px;
+}
 
 .newButton {
     display: inline-block;
