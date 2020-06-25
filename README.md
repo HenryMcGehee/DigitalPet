@@ -21,3 +21,5 @@ Strech Goals:
     buttons animate
     sound?
     
+![image]
+(Images/wireframe.png)
