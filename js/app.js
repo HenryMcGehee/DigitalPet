@@ -176,7 +176,7 @@ function startTimer(){
                         petLife.removeChild(information);
                         petLife.removeChild(buttons);
 
-                        addText('You have unleashed Ctul Riel!', petLife);
+                        addText(`You have unleashed Ctul Riel's conduit ${p.name}!`, petLife);
                         addButton('Shift Time Lines', petLife, reLoad);
                     }
                 }
