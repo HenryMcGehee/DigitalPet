@@ -21,5 +21,8 @@ Strech Goals:
     buttons animate
     sound?
     
-![image]
-(Images/wireframe.png)
+![image](Images/wireframe.png)
+
+
+Story:
+    You are a Disiple of Black, a cult that worships the cyber elder Ctul Riel. It is your divine duty to see that your master maifests a version of it's self in your reality. Sacrifice, pray and feed the conduit until it reaches maturity. May your work gift this world with Ctul Riel's unending embrace.
