@@ -189,7 +189,7 @@ function startTimer(){
                     for (let i = 0; i < allSound.length; i++) {
                         allSound[i].src = '';
                     }
-                    currentState.setAttribute('id', 'dead');
+                    petLife.childNodes[1].setAttribute('id', 'dead');
 
                     dead = true;
                     time = 0;
