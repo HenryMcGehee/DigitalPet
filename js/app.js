@@ -103,6 +103,8 @@ const addPet = () => {
     newPet.appendChild(bottombar);
     screen.appendChild(newPet);
 
+    addText('The towns people are unaware of your deeds.', screen);
+
     startTimer();
 
     $('.feed').on('click', feedPet);
@@ -127,6 +129,7 @@ function startTimer(){
                 const buttons = document.querySelector('.bottomBar');
                 let currentState = document.querySelector('#young');
                 let information = document.querySelector('.info');
+                let story = document.querySelector('.story');
                 let boredNum = document.querySelector('#info4');
                 let hungerNum = document.querySelector('#info2');
                 let sleepyNum = document.querySelector('#info3');
@@ -134,7 +137,7 @@ function startTimer(){
                 if(!speed){
                     time += 2;
                 }else{
-                    time *= 4;
+                    time += 4;
                 }
                 
                 if(time % 10 === 0){
@@ -146,24 +149,28 @@ function startTimer(){
                         currentState = document.querySelector('#young');
                         currentState.setAttribute('id', 'older');
                         addButton('Burn Effigy', buttons, doubleSpeed);
+                        story.innerText = 'Missing persons posters are increasing and people are starting to organize. A special task force has been created to investigate the disappearances';
                     }
                     if(p.age === 11){
                         audio(symbolSound, true, "./audio/symbol.wav");
                         currentState = document.querySelector('#older');
                         currentState.setAttribute('id', 'old');
                         addButton('Burn Effigy', buttons, doubleSpeed);
+                        story.innerText = 'Rumors are spreading of hooded figures traveling by the dark of night. One of your fellow disiples was killed this morning after a brief but violent struggle with authorities. They will be honored at tonights ceremony.';
                     }
                     if(p.age === 16){
                         audio(squidSound, true,"./audio/squid.wav");
                         currentState = document.querySelector('#old');
                         currentState.setAttribute('id', 'ancient');
                         addButton('Burn Effigy', buttons, doubleSpeed);
+                        story.innerText = 'Power outages and climate fluctuations have been reported across the nation. Scientists from around the world say these phenomena defy all logical explination.';
                     }
                     if(p.age === 21){
                         audio(demonSound, true, "./audio/baby.wav");
                         currentState = document.querySelector('#ancient');
                         currentState.setAttribute('id', 'elder');
                         addButton('Burn Effigy', buttons, doubleSpeed);
+                        story.innerText = 'The world as we know it has vanished. Blood red skys and boiling oceans are all that remain. Large metropolitan areas contain the last remnants of humanity, many of whom have been made to be believers.';
                     }
                     if (p.age === 25){
                         
@@ -176,7 +183,7 @@ function startTimer(){
                         petLife.removeChild(information);
                         petLife.removeChild(buttons);
 
-                        addText(`You have unleashed Ctul Riel's conduit ${p.name}!`, petLife);
+                        story.innerText = `You have unleashed Ctul Riel's conduit ${p.name}!`;
                         addButton('Shift Time Lines', petLife, reLoad);
                     }
                 }
@@ -206,7 +213,7 @@ function startTimer(){
                     petLife.removeChild(information);
                     petLife.removeChild(buttons);
 
-                    addText('your pet died', petLife);
+                    story.innerText = `${p.name} has died. The Disiples of Black have failed.`;
                     addButton('Rebirth', petLife, reLoad);
                 }
             }
@@ -220,6 +227,7 @@ const reLoad = () => {
 
 const addText = (content, location) => {
     const message = document.createElement('h2');
+    message.setAttribute('class', 'story')
     message.innerText = content;
     location.appendChild(message);
 }
