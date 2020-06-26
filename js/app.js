@@ -29,6 +29,12 @@ function audio(audio, loop, link) {
     audio.play();
 }
 
+const makePet = () => {
+    
+    namePet();
+    addPet();
+}
+
 const namePet = () => {
     audio(bgSound, true, "./audio/bg.wav");
 
@@ -112,11 +118,7 @@ const addPet = () => {
     $('.play').on('click', playPet);
 }
 
-const makePet = () => {
-    
-    namePet();
-    addPet();
-}
+
 
 function startTimer(){
     if(started === false){
